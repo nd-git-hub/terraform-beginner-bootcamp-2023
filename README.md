@@ -13,9 +13,13 @@ General format :
 - ** PATCH **  version when you make backward compatible bug fixes
 Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.
 
-## Install terraform CLI **
+## Install terraform CLI 
 Issue found in .gitpod.yml terraform install step. 
 Script has been added into yml file with terraform install steps 
 
 
-[terraform installation reference ](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+[terraform installation reference ] (https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+## ADD PROJECT_ROOT env variable 
+- PROJECT_ROOT now can take to directory to bootcamp base reposisitory folder 
+
