@@ -28,3 +28,20 @@ gp env PROJECT_ROOT='/workspace/terraform-beginner-bootcamp-2023'
 ## Correct aws cli install step on .gitpod.yml 
 - Created new script aws_cli_install with cli installation steps and updated the script in .gitpod.yml
 
+## Add terraform random module 
+- add code for terraform random provider to generate folder name 
+- run terraform phases init,plan,validate,apply to test terraform 
+- terraform state and other files are skipped from backing up to git via .gitingnore 
+- refer below block for random block
+``` 
+resource "random_string" "bucket_name" {
+  length           = 12
+  special          = false
+ }
+
+output "Random_backet_name" {
+  value = random_string.bucket_name.result
+}
+```
+[Terraform registry] (https://registry.terraform.io/browse/modules)
+(https://registry.terraform.io/providers/hashicorp/random/latest)
