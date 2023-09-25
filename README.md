@@ -22,4 +22,9 @@ Script has been added into yml file with terraform install steps
 
 ## ADD PROJECT_ROOT env variable 
 - PROJECT_ROOT now can take to directory to bootcamp base reposisitory folder 
+In order to make ** persistant ** change on all gitpod sessions run below once 
+gp env PROJECT_ROOT='/workspace/terraform-beginner-bootcamp-2023'
+
+## Correct aws cli install step on .gitpod.yml 
+- Created new script aws_cli_install with cli installation steps and updated the script in .gitpod.yml
 
