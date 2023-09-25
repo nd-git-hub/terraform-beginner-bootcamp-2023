@@ -1,5 +1,7 @@
 #!/usr/bin/bash 
 
+export PROJECT_ROOT='/workspace/terraform-beginner-bootcamp-2023'
+
 sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
 wget -O- https://apt.releases.hashicorp.com/gpg | \
 gpg --dearmor | \
