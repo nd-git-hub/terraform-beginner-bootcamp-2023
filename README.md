@@ -45,3 +45,26 @@ output "Random_backet_name" {
 ```
 [Terraform registry] (https://registry.terraform.io/browse/modules)
 (https://registry.terraform.io/providers/hashicorp/random/latest)
+
+## Crate s3 bucket via terraform 
+- update main.tf file with aws provider and bucket block 
+- you can have multiple providers in one main.tf file
+- run terraform init to intialize the provider 
+- check if access-key and access-key-id is define correctly 
+```
+make sure you set below values from your aws account 
+export AWS_ACCESS_KEY_ID==
+export AWS_SECRET_ACCESS_KEY=
+export AWS_SESSION_TOKEN=
+
+
+export AWS_ACCESS_KEY_ID==
+export AWS_SECRET_ACCESS_KEY=
+export AWS_SESSION_TOKEN=
+
+aws sts get-caller-identity
+```
+[S3 bucket naming rules] (https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+
+ 
+
