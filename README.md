@@ -64,5 +64,7 @@ export AWS_SESSION_TOKEN=
 
 aws sts get-caller-identity
 ```
+[S3 bucket naming rules] (https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
+
  
 
