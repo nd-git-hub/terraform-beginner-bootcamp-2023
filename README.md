@@ -66,5 +66,10 @@ aws sts get-caller-identity
 ```
 [S3 bucket naming rules] (https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
 
- 
+ ** Copy state file to s3 folder **
+```
+aws s3 cp terraform.tfstate s3://f89n5ilhw86j
+
+```
+
 
