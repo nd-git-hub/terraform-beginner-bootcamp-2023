@@ -72,4 +72,7 @@ aws s3 cp terraform.tfstate s3://f89n5ilhw86j
 
 ```
 
-
+## Terraform login and state file migration 
+[] This step will migrate the local terraform state file to terraform cloud 
+[] Genetea terraform token and copy to  /home/gitpod/.terraform.d/credentials.tfrc.json via process `terraform login`
+[] 

@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "ndterra"
+
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -18,8 +25,9 @@ provider "random" {
 provider "aws" {
   # Configuration options
  region = "us-east-1"
- access_key = ""
- secret_key = ""
+ access_key = "x"
+ secret_key = "x"
+ token = "x"
 }
 
 #https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html 
