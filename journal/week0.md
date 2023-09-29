@@ -123,10 +123,9 @@ https://8080-ndgithub-terraformbegin-5x1c2nop0hn.ws-us104.gitpod.io
 > Configure OAI 
  the "Origin Access Policy" (or "Origin Access Identity") in CloudFront helps secure your origin (bucket or website) by allowing CloudFront to access it while restricting direct access to the origin from the public.
  access path : user > cloudfront > OAI > origin
-```
 
  > Using an Origin Access Identity (OAI):Improved Security,Granular Access Control, Easier Configuration
-```
+
  > Not Using an Origin Access Identity (OAI): Publicly Accessible Origin, Complex Permissions
 ```
 
