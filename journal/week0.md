@@ -1,10 +1,10 @@
 # Terraform Beginner Bootcamp 2023
-  * [Sementic versioning](#sementic-versioning)
+  * [Semantic versioning](#sementic-versioning)
   * [Install terraform CLI](#install-terraform-cli)
   * [ADD PROJECT_ROOT env variable](#add-project-root-env-variable)
   * [Correct aws cli install step on .gitpod.yml](#correct-aws-cli-install-step-on-gitpodyml)
   * [Add terraform random module](#add-terraform-random-module)
-  * [Crate s3 bucket via terraform](#crate-s3-bucket-via-terraform)
+  * [Create s3 bucket via terraform](#crate-s3-bucket-via-terraform)
   * [Terraform login and state file migration](#terraform-login-and-state-file-migration)
   * [Crate static website using S3](#crate-static-website-using-s3)
 
@@ -54,7 +54,7 @@ output "Random_backet_name" {
 [Terraform registry] (https://registry.terraform.io/browse/modules)
 (https://registry.terraform.io/providers/hashicorp/random/latest)
 
-## Crate s3 bucket via terraform 
+## Create s3 bucket via terraform 
 - update main.tf file with aws provider and bucket block 
 - you can have multiple providers in one main.tf file
 - run terraform init to intialize the provider 
@@ -117,12 +117,18 @@ Hit CTRL-C to stop the server *
 https://8080-ndgithub-terraformbegin-5x1c2nop0hn.ws-us104.gitpod.io
 
 - create cloudfront distribution (CDN) 
--- Instead of providing full public access on the bucket, it is recommened to create CDN and host as a website. This make the folder hosting more secure and provide addtional features as well. 
+-- Instead of providing full public access on the bucket, it is recommened to create CDN and host as a website. This make the folder hosting more secure and provide addtional features as well.
+
+```  
 > Configure OAI 
  the "Origin Access Policy" (or "Origin Access Identity") in CloudFront helps secure your origin (bucket or website) by allowing CloudFront to access it while restricting direct access to the origin from the public.
- access path : user > cloudfront > OAI > origin 
+ access path : user > cloudfront > OAI > origin
+```
+
  > Using an Origin Access Identity (OAI):Improved Security,Granular Access Control, Easier Configuration
+```
  > Not Using an Origin Access Identity (OAI): Publicly Accessible Origin, Complex Permissions
+```
 
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
