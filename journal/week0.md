@@ -4,7 +4,7 @@
   * [ADD PROJECT_ROOT env variable](#add-project-root-env-variable)
   * [Correct aws cli install step on .gitpod.yml](#correct-aws-cli-install-step-on-gitpodyml)
   * [Add terraform random module](#add-terraform-random-module)
-  * [Create s3 bucket via terraform](#crate-s3-bucket-via-terraform)
+  * [Create s3 bucket via terraform](#create-s3-bucket-via-terraform)
   * [Terraform login and state file migration](#terraform-login-and-state-file-migration)
   * [Crate static website using S3](#crate-static-website-using-s3)
 
