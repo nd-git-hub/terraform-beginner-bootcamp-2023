@@ -85,3 +85,34 @@ aws s3 cp terraform.tfstate s3://f89n5ilhw86j
     }
   }
 ``` 
+## Crate static website using S3
+[bootcamp link] {https://www.youtube.com/watch?v=qIe3srQOQ8Q}
+- Create folder and change properties to static 
+- add index.html and error.html files to code 
+- copy command to upload to s3
+```
+aws s3 cp public/index.html s3
+://terraform-bootcamp-2023-nd/index.html 
+upload: public/index.html to s3://terraform-bootcamp-2023-nd/index.html
+```
+- to verify how the code look like, you install http server
+```
+npm install http-server -g
+http-server
+```
+- outputs as below, click on loaclhost and ensure it shows up page 
+*Available on:
+  http://127.0.0.1:8080
+  http://10.0.5.2:8080
+Hit CTRL-C to stop the server * 
+
+https://8080-ndgithub-terraformbegin-5x1c2nop0hn.ws-us104.gitpod.io
+
+- create cloudfront distribution (CDN) 
+-- Instead of providing full public access on the bucket, it is recommened to create CDN and host as a website. This make the folder hosting more secure and provide addtional features as well. 
+> Configure OAI 
+ the "Origin Access Policy" (or "Origin Access Identity") in CloudFront helps secure your origin (bucket or website) by allowing CloudFront to access it while restricting direct access to the origin from the public.
+ access path : user > cloudfront > OAI > origin 
+ > Using an Origin Access Identity (OAI):Improved Security,Granular Access Control, Easier Configuration
+ > Not Using an Origin Access Identity (OAI): Publicly Accessible Origin, Complex Permissions
+
