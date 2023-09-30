@@ -9,3 +9,9 @@ output "website_endpoint" {
 output "s3_bucket_object" {
   value = aws_s3_object.index.key
 }
+
+
+
+output "origin_access_control_name" {
+  value = aws_cloudfront_origin_access_control.origin-access-cntrl.name
+}

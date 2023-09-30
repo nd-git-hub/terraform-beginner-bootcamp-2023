@@ -29,37 +29,5 @@ terraform {
 
 #https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html 
 
-resource "aws_s3_bucket" "s3-bucket-tf-bcmp" {
-  bucket = var.bucket_name
-
-  tags = {
-    UserUuid = var.user_uuid
-  }
-}
-
-resource "aws_s3_bucket_website_configuration" "website_configuration" {
-  bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket
-
-  index_document {
-    suffix = "index.html"
-  }
-
-  error_document {
-    key = "error.html"
-  }
-}
-
-resource "aws_s3_object" "index" {
-  bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
-  key    = "index.html" # Set the desired object key
-
-  source = var.index_html_filepath # Path to the local index.html file
-  etag = filemd5(var.index_html_filepath)
-}
-  resource "aws_s3_object" "error" {
-  bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
-  key    = "error.html" # Set the desired object key
-
-  source = var.error_html_filepath # Path to the local error.html file
-  etag = filemd5(var.error_html_filepath)
-}
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity
+data "aws_caller_identity" "current" {}
