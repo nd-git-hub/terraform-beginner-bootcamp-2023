@@ -1,11 +1,9 @@
 
-resource "random_string" "bucket_name" {
-  length           = 12
-  special          = false
-  upper = false 
+
+resource "aws_s3_bucket" "s3-bucket-tf-bcmp" {
+  bucket = var.bucket_name
+
+  tags = {
+    UserUuid = var.user_uuid
   }
-
-output "Random_backet_name" {
-  value = random_string.bucket_name.result
 }
-
