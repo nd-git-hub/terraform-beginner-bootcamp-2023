@@ -1,3 +1,5 @@
-output "Random_backet_name" {
-  value = aws_s3_bucket.s3-bucket-tf-bcmp.bucket
+output "bucket_name" {
+  description = "Bucket name for our static website hosting"
+  value = module.terrahouse_aws.bucket_name
 }
+

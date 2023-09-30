@@ -1,9 +1,14 @@
 
+provider "aws" {
+  # Configuration options
+ region = "us-east-1"
+ access_key = var.access_key
+ secret_key = var.secret_key
+ token = var.token
+ }
 
-resource "aws_s3_bucket" "s3-bucket-tf-bcmp" {
-  bucket = var.bucket_name
-
-  tags = {
-    UserUuid = var.user_uuid
-  }
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
 }
