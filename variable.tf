@@ -17,3 +17,11 @@ variable "secret_key" {
 variable "token" {
   description = "The AWS session token"
 }
+
+variable "index_html_filepath" {
+  type = string
+}
+
+variable "error_html_filepath" {
+  type = string
+}
