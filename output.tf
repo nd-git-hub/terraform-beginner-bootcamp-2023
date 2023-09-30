@@ -12,3 +12,8 @@ output "s3_website_endpoint" {
   description = "S3 Static Website hosting endpoint"
   value = module.terrahouse_aws.website_endpoint
 }
+
+output "s3_OAI" {
+  description = "cloudfrmation OAI name "
+  value = module.terrahouse_aws.origin_access_control_name
+}
