@@ -25,14 +25,22 @@ resource "aws_s3_object" "index" {
   content_type = "text/html"
   source = var.index_html_filepath # Path to the local index.html file
   etag = filemd5(var.index_html_filepath)
+    lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes = [etag]
+  }
 }
+
   resource "aws_s3_object" "error" {
   bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
   key    = "error.html" # Set the desired object key
   content_type = "text/html"
   source = var.error_html_filepath # Path to the local error.html file
   etag = filemd5(var.error_html_filepath)
-}
+  lifecycle {
+    ignore_changes = [ etag ]
+  }
+ }
 
 
 resource "aws_s3_bucket_policy" "bucket_policy" {
@@ -56,4 +64,8 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
       }
     }
   })
+}
+
+resource "terraform_data" "content_version" {
+  input = var.content_version
 }
