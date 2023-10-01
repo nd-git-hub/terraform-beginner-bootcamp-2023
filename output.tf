@@ -17,3 +17,9 @@ output "s3_OAI" {
   description = "cloudfrmation OAI name "
   value = module.terrahouse_aws.origin_access_control_name
 }
+
+
+#output "cloudfront_url" {
+ # description = "The CloudFront Distribution Domain Name"
+ # value = module.terrahouse_aws.website_endpoint
+#}
