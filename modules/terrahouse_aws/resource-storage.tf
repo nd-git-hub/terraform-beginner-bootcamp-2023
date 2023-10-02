@@ -25,11 +25,32 @@ resource "aws_s3_object" "index" {
   content_type = "text/html"
   source = var.index_html_filepath # Path to the local index.html file
   etag = filemd5(var.index_html_filepath)
-    lifecycle {
-    replace_triggered_by = [terraform_data.content_version.output]
-    ignore_changes = [etag]
-  }
 }
+
+resource "aws_s3_object" "asset_upload" {
+ for_each = fileset(var.assets_path,"*.{jpg,webp,png,gif}")
+ bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
+ key    = "asstes/${each.key}" # Set the desired object key
+   source = "${var.assets_path}/${each.key}" # Path to the local asset_upload.html file
+ etag = filemd5("${var.assets_path}/${each.key}")
+   lifecycle {
+   replace_triggered_by = [terraform_data.content_version.output]
+   ignore_changes = [etag]
+ }
+}
+
+# resource "aws_s3_object" "asset_upload" {
+#   for_each = fileset("${path.root}/public/assets","*.{jpg,webp,png,gif}")
+#   bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
+#   key    = "asstes/${each.key}" # Set the desired object key
+#   source = "${path.root}/public/assets/${each.key}" # Path to the local asset_upload.html file
+#   etag = filemd5("${path.root}/public/assets/${each.key}")
+#     lifecycle {
+#     replace_triggered_by = [terraform_data.content_version.output]
+#     ignore_changes = [etag]
+#   }
+# }
+
 
   resource "aws_s3_object" "error" {
   bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
@@ -37,10 +58,7 @@ resource "aws_s3_object" "index" {
   content_type = "text/html"
   source = var.error_html_filepath # Path to the local error.html file
   etag = filemd5(var.error_html_filepath)
-  lifecycle {
-    ignore_changes = [ etag ]
-  }
- }
+}
 
 
 resource "aws_s3_bucket_policy" "bucket_policy" {

@@ -15,3 +15,7 @@ output "s3_bucket_object" {
 output "origin_access_control_name" {
   value = aws_cloudfront_origin_access_control.origin-access-cntrl.name
 }
+
+output "website_domain" {
+  value = aws_cloudfront_distribution.s3_distribution.domain_name
+}
