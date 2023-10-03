@@ -30,7 +30,7 @@ resource "aws_s3_object" "index" {
 resource "aws_s3_object" "asset_upload" {
  for_each = fileset(var.assets_path,"*.{jpg,webp,png,gif}")
  bucket = aws_s3_bucket.s3-bucket-tf-bcmp.bucket  
- key    = "asstes/${each.key}" # Set the desired object key
+ key    = "assets/${each.key}" # Set the desired object key
    source = "${var.assets_path}/${each.key}" # Path to the local asset_upload.html file
  etag = filemd5("${var.assets_path}/${each.key}")
    lifecycle {
