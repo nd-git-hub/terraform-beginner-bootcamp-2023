@@ -17,39 +17,49 @@ terraform {
         }
 
 
-    #     aws = {
-    #   source = "hashicorp/aws"
-    #   version = "5.17.0"
-    # }
+    #    aws = {
+    #    source = "hashicorp/aws"
+    #    version = "5.17.0"
+    #  }
   }
+}
+
+provider "aws" {
+ #Configuration options
+ region = "us-east-1"
+ access_key = var.access_key
+ secret_key = var.secret_key
+ token = var.token
 }
 
 
 provider "terratowns" {
-  endpoint = "http://localhost:4567/api"
-  user_uuid="447ae4bf-7399-4767-ae27-089bb6e8473a" 
-  token="9b49b3fb-b8e9-483c-b703-97ba88eef8e0"
+  endpoint = var.terratowns_endpoint
+  user_uuid = var.teacherseat_user_uuid
+  token = var.terratowns_access_token
 }
-# module "terrahouse_aws" {
-#   source = "./modules/terrahouse_aws"
-#   user_uuid = var.user_uuid
-#   bucket_name = var.bucket_name
-#   index_html_filepath = var.index_html_filepath
-#   error_html_filepath = var.error_html_filepath
-#   content_version = var.content_version
-#   assets_path = var.assets_path
-# }
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.teacherseat_user_uuid
+#  bucket_name = var.bucket_name
+  index_html_filepath = var.index_html_filepath
+  error_html_filepath = var.error_html_filepath
+  content_version = var.content_version
+  assets_path = var.assets_path
+  }
 
 resource "terratowns_home" "home" {
-  name = "How to play Arcanum in 2023!"
+  name = "Lets Go Green, Join EV program !"
   description = <<DESCRIPTION
-Arcanum is a game from 2001 that shipped with alot of bugs.
-Modders have removed all the originals making this game really fun
-to play (despite that old look graphics). This is my guide that will
-show you how to play arcanum without spoiling the plot.
+Take your climate action to the next level.
+
+The scientific evidence is clear and irrefutable — human activity is causing our planet to warm at an 
+alarming rate. International bodies of scientists have warned that we have just over a decade to halve our emissions to avoid the most devastating impacts of climate change on our food supply, 
+national security, global health, extreme weather, and more.
 DESCRIPTION
-  #domain_name = module.terrahouse_aws.cloudfront_url
-  domain_name = "3fdq3gz.cloudfront.net"
-  town = "gamers-grotto"
+  domain_name = module.terrahouse_aws.website_domain
+  #domain_name = "3fdq3gzaa.cloudfront.net"
+  town = "missingo"
   content_version = 1
 }
