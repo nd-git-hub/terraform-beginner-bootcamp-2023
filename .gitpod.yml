@@ -2,7 +2,8 @@ tasks:
   - name: terraform
     before: |
       ./bin/terraform_cli_install   
-      ./bin/.project.env
+      cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
+      source /bin/.project.env   
   - name: sinatra
     before: | 
       cd $PROJECT_ROOT
@@ -17,6 +18,8 @@ tasks:
   - name: http-server 
     before: |
      npm install --global http-server 
+    command: 
+      http-server   
 vscode:
   extensions:
     - amazonwebservices.aws-toolkit-vscode
