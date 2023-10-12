@@ -58,7 +58,7 @@ national security, global health, extreme weather, and more.
 DESCRIPTION
   domain_name = module.home_arcanum_hosting.website_domain
   #domain_name = "3fdq3gzaa.cloudfront.net"
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.arcanum.content_version
 }
 
@@ -79,6 +79,6 @@ into Canada, I decided I would see how I could my own Paydays bars,
 and if they are most cost effective.
 DESCRIPTION
   domain_name = module.home_payday_hosting.website_domain
-  town = "missingo"
+  town = "the-nomad-pad"
   content_version = var.payday.content_version
 }
