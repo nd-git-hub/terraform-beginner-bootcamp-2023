@@ -1,3 +1,15 @@
+
+terratowns_endpoint="https://terratowns.cloud/api"
+
+arcanum = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/arcanum"
+  content_version = 2 
+}
+payday = {
+  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/payday"
+  content_version = 1 
+}
+
 #export TF_VAR_bucket_name="ubeppz5bay5i-bcmp"
 export TF_VAR_terratowns_endpoint="https://terratowns.cloud/api" 
 export TF_VAR_teacherseat_user_uuid="447ae4bf-7399-4767-ae27-089bb6e8473a"
@@ -6,8 +18,6 @@ export TF_VAR_terratowns_access_token=$TF_VAR_terratowns_access_token
 export TF_VAR_index_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/index.html"
 export TF_VAR_error_html_filepath="/workspace/terraform-beginner-bootcamp-2023/public/error.html"
 export TF_VAR_assets_path="/workspace/terraform-beginner-bootcamp-2023/public/assets/"
-export TF_VAR_content_version="1"
-
 
 export AWS_ACCESS_KEY_ID="xx"
 export AWS_SECRET_ACCESS_KEY="xx"

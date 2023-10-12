@@ -1,11 +1,11 @@
 terraform {
-#  cloud {
-#    organization = "ndterra"
-#
-#    workspaces {
-#      name = "terrahouse-cloud"
-#    }
-#  }
+ cloud {
+   organization = "ndterra"
+
+   workspaces {
+     name = "terra-house-1"
+   }
+ }
   required_providers {
 #    random = {
 #      source = "hashicorp/random"
@@ -39,15 +39,13 @@ provider "terratowns" {
   token = var.terratowns_access_token
 }
 
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_arcanum_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-#  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
-  }
+  public_path = var.arcanum.public_path
+  content_version = var.arcanum.content_version
+}
+
 
 resource "terratowns_home" "home" {
   name = "Lets Go Green, Join EV program !"
@@ -58,8 +56,29 @@ The scientific evidence is clear and irrefutable — human activity is causing o
 alarming rate. International bodies of scientists have warned that we have just over a decade to halve our emissions to avoid the most devastating impacts of climate change on our food supply, 
 national security, global health, extreme weather, and more.
 DESCRIPTION
-  domain_name = module.terrahouse_aws.website_domain
+  domain_name = module.home_arcanum_hosting.website_domain
   #domain_name = "3fdq3gzaa.cloudfront.net"
   town = "missingo"
-  content_version = 1
+  content_version = var.arcanum.content_version
+}
+
+
+
+module "home_payday_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.payday.public_path
+  content_version = var.payday.content_version
+}
+
+resource "terratowns_home" "home_payday" {
+  name = "Making your Payday Bar"
+  description = <<DESCRIPTION
+Since I really like Payday candy bars but they cost so much to import
+into Canada, I decided I would see how I could my own Paydays bars,
+and if they are most cost effective.
+DESCRIPTION
+  domain_name = module.home_payday_hosting.website_domain
+  town = "missingo"
+  content_version = var.payday.content_version
 }
